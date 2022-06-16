@@ -30,14 +30,22 @@ class DemoApplicationTests {
     //删除
     //删除学生必须先删除与课程关联的成绩表中的数据
     public void deleteStudent(long sid){
-        scoreMapper.deleteBySid(sid);
-        studentMapper.deleteById(sid);
+        try {
+            scoreMapper.deleteBySid(sid);
+            studentMapper.deleteById(sid);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     //删除课程必须先删除成绩表中的有学生在使用的数据
     public void deleteCourse(long cid){
-        scoreMapper.deleteByCid(cid);
-        courseMapper.deleteCourse(cid);
+        try {
+            scoreMapper.deleteByCid(cid);
+            courseMapper.deleteCourse(cid);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
